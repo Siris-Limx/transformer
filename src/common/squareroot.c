@@ -1,8 +1,8 @@
-#include "common/sqrt.h"
+#include "common/squareroot.h"
 #include <stdint.h>
 #include <stdio.h>
 
-int sqrt(int input) {
+int squareroot(int input) {
     if (input == 0 || input == 1) {
         return input;
     }

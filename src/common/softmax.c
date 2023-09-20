@@ -4,20 +4,19 @@
 
 void softmax(int* input, int* output, int row, int col)
 {
-    int exp_lut[1<<16];
-
-    for (int i = 0; i < (1<<32); i++) {
-        exp_lut[i] = i + 1;
-    }
-
-    for (int i = 0; i < row; i++)
-    {
-        int sum = 0;
-        for (int j = 0; j < col; j++) {
-            sum += exp_lut[input[i * col + j]];
+   for(int row_id = 0; row_id < row; row_id++)
+   {
+        int acc = 0;
+        for(int col_id = 0; col_id < col; col_id++)
+        {
+            int index = row_id * col + col_id;
+            output[index] = 1 << input[index];
+            acc += output[index];
+            output[index] <<= 7;
         }
-        for (int j = 0; j < col; j++) {
-            output[i * col + j] = exp_lut[input[i * col + j]] / sum;
+        for(int col_id = 0; col_id < col; col_id++)
+        {
+            output[row_id * col + col_id] /= acc;
         }
-    }
+   } 
 }

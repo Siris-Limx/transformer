@@ -1,12 +1,12 @@
-#ifndef EXP_H
-#define EXP_H
+#ifndef SQUAREROOT_H
+#define SQUAREROOT_H
 
 #include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-    int exp(int);
+    int squareroot(int);
 #ifdef __cplusplus
 }
 #endif
